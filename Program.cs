@@ -38,7 +38,7 @@ namespace SyncAppServer
          HttpListenerRequest request = context.Request;
          // Получите объект ответа.
          HttpListenerResponse response = context.Response;
-         // Construct a response.
+         // Сформулируйте ответ.
          string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
          byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
          // Get a response stream and write the response to it.
