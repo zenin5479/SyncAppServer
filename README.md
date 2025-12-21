@@ -1,1 +1,1 @@
-# SyncAppServer
+# Синхронный веб-сервер HttpListener
