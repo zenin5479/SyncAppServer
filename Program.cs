@@ -18,21 +18,22 @@ namespace SyncAppServer
             Console.WriteLine("Для использования класса HttpListener требуется Windows XP с пакетом обновления 2 или Server 2003");
             return;
          }
+
          // Требуются префиксы URI,
          // например "http://contoso.com:8080/index/"
          if (prefixes == null || prefixes.Length == 0)
             throw new ArgumentException("prefixes");
 
-         // Create a listener.
+         // Создайте прослушиватель
          HttpListener listener = new HttpListener();
-         // Add the prefixes.
+         //Добавьте префиксы.
          foreach (string s in prefixes)
          {
             listener.Prefixes.Add(s);
          }
          listener.Start();
          Console.WriteLine("Listening...");
-         // Note: The GetContext method blocks while waiting for a request.
+         // Примечание: Метод getContext блокируется во время ожидания запроса.
          HttpListenerContext context = listener.GetContext();
          HttpListenerRequest request = context.Request;
          // Obtain a response object.
