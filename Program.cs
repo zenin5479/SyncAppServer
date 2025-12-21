@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 
 namespace SyncAppServer
@@ -42,11 +43,11 @@ namespace SyncAppServer
          // Формулируем ответ
          string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
          byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
-         // Получите поток ответов и запишите ответ на него.
+         // Получаем поток ответов и записываем ответ
          response.ContentLength64 = buffer.Length;
-         System.IO.Stream output = response.OutputStream;
+         Stream output = response.OutputStream;
          output.Write(buffer, 0, buffer.Length);
-         // Вы должны закрыть выходной поток.
+         // Закрываем выходной поток
          output.Close();
          listener.Stop();
       }
