@@ -15,11 +15,11 @@ namespace SyncAppServer
       {
          if (!HttpListener.IsSupported)
          {
-            Console.WriteLine("Для использования класса HttpListener требуется Windows XP с пакетом обновления 2 или Server 2003.");
+            Console.WriteLine("Для использования класса HttpListener требуется Windows XP с пакетом обновления 2 или Server 2003");
             return;
          }
-         // URI prefixes are required,
-         // for example "http://contoso.com:8080/index/".
+         // Требуются префиксы URI,
+         // например "http://contoso.com:8080/index/"
          if (prefixes == null || prefixes.Length == 0)
             throw new ArgumentException("prefixes");
 
