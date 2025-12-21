@@ -19,8 +19,7 @@ namespace SyncAppServer
             return;
          }
 
-         // Требуются префиксы URI,
-         // например "http://contoso.com:8080/index/"
+         // Требуются префиксы URI, например "http://contoso.com:8080/index/"
          if (prefixes == null || prefixes.Length == 0)
             throw new ArgumentException("prefixes");
 
