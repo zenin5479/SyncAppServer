@@ -34,7 +34,7 @@ namespace SyncAppServer
          }
          listener.Start();
          Console.WriteLine("Прослушивание...");
-         // Примечание: Метод getContext блокируется во время ожидания запроса.
+         // Примечание: Метод getContext блокируется во время ожидания запроса
          HttpListenerContext context = listener.GetContext();
          HttpListenerRequest request = context.Request;
          // Получите объект ответа.
