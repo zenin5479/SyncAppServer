@@ -10,7 +10,7 @@ namespace SyncAppServer
          Console.WriteLine("Hello World!");
       }
 
-      // This example requires the System and System.Net namespaces.
+      // Для этого примера требуются пространства имен System и System.Net
       public static void SimpleListenerExample(string[] prefixes)
       {
          if (!HttpListener.IsSupported)
