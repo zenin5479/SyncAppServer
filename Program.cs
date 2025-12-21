@@ -37,9 +37,9 @@ namespace SyncAppServer
          // Примечание: Метод getContext блокируется во время ожидания запроса
          HttpListenerContext context = listener.GetContext();
          HttpListenerRequest request = context.Request;
-         // Получите объект ответа.
+         // Получаем объект ответа
          HttpListenerResponse response = context.Response;
-         // Сформулируйте ответ.
+         // Формулируем ответ
          string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
          byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
          // Получите поток ответов и запишите ответ на него.
