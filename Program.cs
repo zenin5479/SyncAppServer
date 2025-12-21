@@ -9,6 +9,7 @@ namespace SyncAppServer
       static void Main(string[] args)
       {
          Console.WriteLine("Hello World!");
+         SimpleListenerExample(new[] { "http://localhost:8080/" });
       }
 
       // Для этого примера требуются пространства имен System и System.Net
@@ -20,7 +21,7 @@ namespace SyncAppServer
             return;
          }
 
-         // Требуются префиксы URI, например "http://contoso.com:8080/index/"
+         // Требуются префиксы URI, например "http://localhost:8080/"
          if (prefixes == null || prefixes.Length == 0)
          {
             throw new ArgumentException("prefixes");
@@ -33,6 +34,7 @@ namespace SyncAppServer
          {
             listener.Prefixes.Add(s);
          }
+
          listener.Start();
          Console.WriteLine("Прослушивание...");
          // Примечание: Метод getContext блокируется во время ожидания запроса
