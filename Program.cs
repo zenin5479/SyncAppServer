@@ -21,17 +21,19 @@ namespace SyncAppServer
 
          // Требуются префиксы URI, например "http://contoso.com:8080/index/"
          if (prefixes == null || prefixes.Length == 0)
+         {
             throw new ArgumentException("prefixes");
+         }
 
          // Создайте прослушиватель
          HttpListener listener = new HttpListener();
-         //Добавьте префиксы.
+         // Добавляем префиксы
          foreach (string s in prefixes)
          {
             listener.Prefixes.Add(s);
          }
          listener.Start();
-         Console.WriteLine("Listening...");
+         Console.WriteLine("Прослушивание...");
          // Примечание: Метод getContext блокируется во время ожидания запроса.
          HttpListenerContext context = listener.GetContext();
          HttpListenerRequest request = context.Request;
