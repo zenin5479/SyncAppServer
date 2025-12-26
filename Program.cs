@@ -10,7 +10,7 @@ namespace SyncAppServer
 
       private static readonly HttpListener listener = new HttpListener();
 
-      static void Main(string[] args)
+      static void Main()
       {
          // Добавляем обработку CORS для тестирования
          listener.Prefixes.Add("http://127.0.0.1:8888/");
