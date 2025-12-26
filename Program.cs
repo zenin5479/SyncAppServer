@@ -7,13 +7,13 @@ namespace SyncAppServer
 {
    class Program
    {
-      private static readonly HttpListener listener = new HttpListener();
+      private static readonly HttpListener Listener = new HttpListener();
 
       static void Main(string[] args)
       {
          // Указываем префиксы для прослушивания
-         listener.Prefixes.Add("http://localhost:8080/");
-         listener.Start();
+         Listener.Prefixes.Add("http://localhost:8080/");
+         Listener.Start();
          Console.WriteLine("Сервер запущен на http://localhost:8080/");
 
          // Синхронная обработка запросов в цикле
@@ -22,7 +22,7 @@ namespace SyncAppServer
             try
             {
                // Ожидаем входящий запрос (блокирующий вызов)
-               HttpListenerContext context = listener.GetContext();
+               HttpListenerContext context = Listener.GetContext();
                ProcessRequest(context);
             }
             catch (Exception ex)
