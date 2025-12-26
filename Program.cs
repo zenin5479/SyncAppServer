@@ -9,7 +9,7 @@ namespace SyncAppServer
    {
       private static readonly HttpListener Listener = new HttpListener();
 
-      static void Main(string[] args)
+      static void Main()
       {
          // Указываем префиксы для прослушивания
          Listener.Prefixes.Add("http://localhost:8080/");
