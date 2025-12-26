@@ -8,13 +8,13 @@ namespace SyncAppServer
    internal class Program
    {
 
-      private static readonly HttpListener listener = new HttpListener();
+      private static readonly HttpListener Listener = new HttpListener();
 
       static void Main()
       {
          // Добавляем обработку CORS для тестирования
-         listener.Prefixes.Add("http://localhost:8080/");
-         listener.Start();
+         Listener.Prefixes.Add("http://localhost:8080/");
+         Listener.Start();
          Console.WriteLine("Сервер запущен на http://localhost:8080/");
          Console.WriteLine("Ожидание запросов...\n");
 
@@ -22,7 +22,7 @@ namespace SyncAppServer
          {
             try
             {
-               HttpListenerContext context = listener.GetContext();
+               HttpListenerContext context = Listener.GetContext();
                ProcessRequest(context);
             }
             catch (Exception ex)
