@@ -13,9 +13,9 @@ namespace SyncAppServer
       static void Main()
       {
          // Добавляем обработку CORS для тестирования
-         listener.Prefixes.Add("http://127.0.0.1:8888/");
+         listener.Prefixes.Add("http://localhost:8080/");
          listener.Start();
-         Console.WriteLine("Сервер запущен на http://127.0.0.1:8888");
+         Console.WriteLine("Сервер запущен на http://localhost:8080/");
          Console.WriteLine("Ожидание запросов...\n");
 
          while (true)
