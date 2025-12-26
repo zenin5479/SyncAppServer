@@ -9,7 +9,7 @@ namespace SyncAppServer
       static void Main(string[] args)
       {
          Console.WriteLine("Hello World!");
-         SimpleListenerExample(new[] { "http://localhost:8080/" });
+         SimpleListenerExample(new[] { "http://127.0.0.1:8888/connection/" });
       }
 
       // Для этого примера требуются пространства имен System и System.Net
@@ -21,7 +21,7 @@ namespace SyncAppServer
             return;
          }
 
-         // Требуются префиксы URI, например "http://localhost:8080/"
+         // Требуются префиксы URI, например "http://127.0.0.1:8888/connection/"
          if (prefixes == null || prefixes.Length == 0)
          {
             throw new ArgumentException("prefixes");
