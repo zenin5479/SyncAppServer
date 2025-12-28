@@ -129,8 +129,18 @@ namespace SyncAppServer
       private static string HandleDelete(HttpListenerRequest request)
       {
          // Пример: удаление ресурса по ID из URL
-         string resourceId = request.Url.Segments.Length > 1 ? request.Url.Segments[1] : "unknown";
-         return $"{{\"message\":\"Resource {resourceId} deleted\", \"method\":\"DELETE\", \"timestamp\":\"{DateTime.Now}\"}}";
+         string resourceId;
+         if (request.Url.Segments.Length > 1)
+         {
+            resourceId = request.Url.Segments[1];
+         }
+         else
+         {
+            resourceId = "unknown";
+         }
+
+         return string.Format("{{\"message\":\"Resource {0} deleted\", \"method\":\"DELETE\", \"timestamp\":\"{1}\"}}",
+            resourceId, DateTime.Now);
       }
    }
 }
