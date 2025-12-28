@@ -41,7 +41,7 @@ namespace SyncAppServer
          response.ContentType = "application/json";
          response.ContentEncoding = Encoding.UTF8;
 
-         string responseString = "";
+         string responseString;
          try
          {
             // Обработка методов
