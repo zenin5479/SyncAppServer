@@ -7,17 +7,13 @@ namespace SyncAppServer
 {
    class Program
    {
-      
-
       static void Main()
       {
          HttpListener listener = new HttpListener();
-         
          // Указываем префиксы для прослушивания
          listener.Prefixes.Add("http://localhost:8080/");
          listener.Start();
          Console.WriteLine("Сервер запущен на http://localhost:8080/");
-
          // Синхронная обработка запросов в цикле
          while (true)
          {
