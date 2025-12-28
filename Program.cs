@@ -122,7 +122,8 @@ namespace SyncAppServer
          }
 
          // Пример обработки (обычно обновление ресурса)
-         return $"{{\"message\":\"Resource updated\", \"method\":\"PUT\", \"data\":{body}, \"timestamp\":\"{DateTime.Now}\"}}";
+         return string.Format("{{\"message\":\"Resource updated\", \"method\":\"PUT\", \"data\":{0}, \"timestamp\":\"{1}\"}}", body,
+            DateTime.Now);
       }
 
       private static string HandleDelete(HttpListenerRequest request)
