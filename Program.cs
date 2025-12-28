@@ -90,8 +90,14 @@ namespace SyncAppServer
       private static string HandleGet(HttpListenerRequest request)
       {
          // Пример: извлечение параметров запроса
-         string name = request.QueryString["name"] ?? "world";
-         return $"{{\"message\":\"Hello {name}\", \"method\":\"GET\", \"timestamp\":\"{DateTime.Now}\"}}";
+         string name = request.QueryString["name"];
+         if (name == null)
+         {
+            name = "world";
+         }
+
+         return string.Format("{{\"message\":\"Hello {0}\", \"method\":\"GET\", \"timestamp\":\"{1}\"}}", name,
+            DateTime.Now);
       }
 
       private static string HandlePost(HttpListenerRequest request)
@@ -103,7 +109,8 @@ namespace SyncAppServer
             body = reader.ReadToEnd();
          }
 
-         return $"{{\"message\":\"Data received\", \"method\":\"POST\", \"data\":{body}, \"timestamp\":\"{DateTime.Now}\"}}";
+         return string.Format("{{\"message\":\"Data received\", \"method\":\"POST\", \"data\":{0}, \"timestamp\":\"{1}\"}}", body,
+            DateTime.Now);
       }
 
       private static string HandlePut(HttpListenerRequest request)
