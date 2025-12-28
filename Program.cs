@@ -73,7 +73,7 @@ namespace SyncAppServer
          }
          catch (Exception ex)
          {
-            responseString = $"{{\"error\":\"{ex.Message}\"}}";
+            responseString = string.Format("{{\"error\":\"{0}\"}}", ex.Message);
             response.StatusCode = (int)HttpStatusCode.InternalServerError;
          }
 
@@ -84,7 +84,7 @@ namespace SyncAppServer
          response.OutputStream.Close();
 
          // Логирование
-         Console.WriteLine($"{DateTime.Now} {request.HttpMethod} {request.Url} -> {response.StatusCode}");
+         Console.WriteLine("{0} {1} {2} -> {3}", DateTime.Now, request.HttpMethod, request.Url, response.StatusCode);
       }
 
       private static string HandleGet(HttpListenerRequest request)
