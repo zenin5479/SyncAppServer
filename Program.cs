@@ -96,7 +96,8 @@ namespace SyncAppServer
             name = "world";
          }
 
-         return string.Format("{{\"message\":\"Hello {0}\", \"method\":\"GET\", \"timestamp\":\"{1}\"}}", name,
+         return string.Format("{{\"message\":\"Hello {0}\", \"method\":\"GET\", \"timestamp\":\"{1}\"}}",
+            name,
             DateTime.Now);
       }
 
@@ -109,7 +110,8 @@ namespace SyncAppServer
             body = reader.ReadToEnd();
          }
 
-         return string.Format("{{\"message\":\"Data received\", \"method\":\"POST\", \"data\":{0}, \"timestamp\":\"{1}\"}}", body,
+         return string.Format("{{\"message\":\"Data received\", \"method\":\"POST\", \"data\":{0}, \"timestamp\":\"{1}\"}}",
+            body,
             DateTime.Now);
       }
 
@@ -122,7 +124,8 @@ namespace SyncAppServer
          }
 
          // Пример обработки (обычно обновление ресурса)
-         return string.Format("{{\"message\":\"Resource updated\", \"method\":\"PUT\", \"data\":{0}, \"timestamp\":\"{1}\"}}", body,
+         return string.Format("{{\"message\":\"Resource updated\", \"method\":\"PUT\", \"data\":{0}, \"timestamp\":\"{1}\"}}",
+            body,
             DateTime.Now);
       }
 
@@ -140,7 +143,8 @@ namespace SyncAppServer
          }
 
          return string.Format("{{\"message\":\"Resource {0} deleted\", \"method\":\"DELETE\", \"timestamp\":\"{1}\"}}",
-            resourceId, DateTime.Now);
+            resourceId,
+            DateTime.Now);
       }
    }
 }
