@@ -45,32 +45,30 @@ namespace SyncAppServer
          try
          {
             // Обработка методов
-            switch (request.HttpMethod)
+            if (request.HttpMethod == "GET")
             {
-               case "GET":
-                  responseString = HandleGet(request);
-                  response.StatusCode = (int)HttpStatusCode.OK;
-                  break;
-
-               case "POST":
-                  responseString = HandlePost(request);
-                  response.StatusCode = (int)HttpStatusCode.Created;
-                  break;
-
-               case "PUT":
-                  responseString = HandlePut(request);
-                  response.StatusCode = (int)HttpStatusCode.OK;
-                  break;
-
-               case "DELETE":
-                  responseString = HandleDelete(request);
-                  response.StatusCode = (int)HttpStatusCode.NoContent;
-                  break;
-
-               default:
-                  responseString = "{\"error\":\"Method not supported\"}";
-                  response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
-                  break;
+               responseString = HandleGet(request);
+               response.StatusCode = (int)HttpStatusCode.OK;
+            }
+            else if (request.HttpMethod == "POST")
+            {
+               responseString = HandlePost(request);
+               response.StatusCode = (int)HttpStatusCode.Created;
+            }
+            else if (request.HttpMethod == "PUT")
+            {
+               responseString = HandlePut(request);
+               response.StatusCode = (int)HttpStatusCode.OK;
+            }
+            else if (request.HttpMethod == "DELETE")
+            {
+               responseString = HandleDelete(request);
+               response.StatusCode = (int)HttpStatusCode.NoContent;
+            }
+            else
+            {
+               responseString = "{\"error\":\"Method not supported\"}";
+               response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
             }
          }
          catch (Exception ex)
