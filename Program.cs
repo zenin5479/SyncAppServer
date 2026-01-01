@@ -13,7 +13,6 @@ namespace SyncAppServer
          // Указываем префиксы для прослушивания
          listener.Prefixes.Add("http://127.0.0.1:8080/");
          //listener.Prefixes.Add("http://127.0.0.1:8888/connection/");
-
          listener.Start();
          Console.WriteLine("Сервер запущен на http://127.0.0.1:8080/");
          // Синхронная обработка запросов в цикле
