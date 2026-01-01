@@ -119,7 +119,7 @@ namespace SyncAppServer
             DateTime.Now);
       }
 
-      public static string HandlePut(HttpListenerRequest request)
+      static string HandlePut(HttpListenerRequest request)
       {
          string body;
          using (StreamReader reader = new StreamReader(request.InputStream, request.ContentEncoding))
@@ -133,7 +133,7 @@ namespace SyncAppServer
             DateTime.Now);
       }
 
-      public static string HandleDelete(HttpListenerRequest request)
+      static string HandleDelete(HttpListenerRequest request)
       {
          // Пример: удаление ресурса по ID из URL
          string resourceId;
