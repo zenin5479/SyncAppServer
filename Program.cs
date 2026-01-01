@@ -31,7 +31,7 @@ namespace SyncAppServer
          }
       }
 
-      private static void Process(HttpListenerContext context)
+      private static void Process()
       {
          
       }
