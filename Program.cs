@@ -91,7 +91,7 @@ namespace SyncAppServer
          Console.WriteLine("{0} {1} {2} -> {3}", DateTime.Now, request.HttpMethod, request.Url, response.StatusCode);
       }
 
-      public static string HandleGet(HttpListenerRequest request)
+      static string HandleGet(HttpListenerRequest request)
       {
          // Пример: извлечение параметров запроса
          string name = request.QueryString["name"];
@@ -105,7 +105,7 @@ namespace SyncAppServer
             DateTime.Now);
       }
 
-      public static string HandlePost(HttpListenerRequest request)
+      static string HandlePost(HttpListenerRequest request)
       {
          // Чтение тела запроса
          string body;
