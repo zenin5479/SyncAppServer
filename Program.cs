@@ -31,13 +31,12 @@ namespace SyncAppServer
          }
       }
 
-      private static void Process()
+      static void Process()
       {
          
       }
 
-
-      private static void ProcessRequest(HttpListenerContext context)
+      static void ProcessRequest(HttpListenerContext context)
       {
          HttpListenerRequest request = context.Request;
          HttpListenerResponse response = context.Response;
@@ -92,7 +91,7 @@ namespace SyncAppServer
          Console.WriteLine("{0} {1} {2} -> {3}", DateTime.Now, request.HttpMethod, request.Url, response.StatusCode);
       }
 
-      private static string HandleGet(HttpListenerRequest request)
+      public static string HandleGet(HttpListenerRequest request)
       {
          // Пример: извлечение параметров запроса
          string name = request.QueryString["name"];
@@ -106,7 +105,7 @@ namespace SyncAppServer
             DateTime.Now);
       }
 
-      private static string HandlePost(HttpListenerRequest request)
+      public static string HandlePost(HttpListenerRequest request)
       {
          // Чтение тела запроса
          string body;
@@ -120,7 +119,7 @@ namespace SyncAppServer
             DateTime.Now);
       }
 
-      private static string HandlePut(HttpListenerRequest request)
+      public static string HandlePut(HttpListenerRequest request)
       {
          string body;
          using (StreamReader reader = new StreamReader(request.InputStream, request.ContentEncoding))
@@ -134,7 +133,7 @@ namespace SyncAppServer
             DateTime.Now);
       }
 
-      private static string HandleDelete(HttpListenerRequest request)
+      public static string HandleDelete(HttpListenerRequest request)
       {
          // Пример: удаление ресурса по ID из URL
          string resourceId;
