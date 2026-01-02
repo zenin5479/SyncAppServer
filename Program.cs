@@ -9,6 +9,11 @@ namespace SyncAppServer
    {
       static void Main()
       {
+         Process();
+      }
+
+      static void Process()
+      {
          HttpListener listener = new HttpListener();
          // Указываем префиксы для прослушивания
          listener.Prefixes.Add("http://127.0.0.1:8080/");
@@ -29,11 +34,6 @@ namespace SyncAppServer
                Console.WriteLine("Ошибка: {0}", ex.Message);
             }
          }
-      }
-
-      static void Process()
-      {
-         
       }
 
       static void ProcessRequest(HttpListenerContext context)
