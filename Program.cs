@@ -48,14 +48,6 @@ namespace SyncAppServer
 
             Console.Write("_");
          }
-
-         Process();
-      }
-
-      static void Process()
-      {
-
-
       }
 
       static void ProcessRequest(HttpListenerContext context)
