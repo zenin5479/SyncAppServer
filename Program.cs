@@ -9,6 +9,29 @@ namespace SyncAppServer
    {
       static void Main()
       {
+         bool exitLoop = false;
+         Console.WriteLine("Цикл активен. Нажмите любую клавишу для проверки...");
+
+         while (!exitLoop)
+         {
+            if (Console.KeyAvailable)
+            {
+               var key = Console.ReadKey(true).Key;
+               Console.WriteLine($"Нажата клавиша: {key}. Продолжить? (Y/N)");
+
+               if (Console.ReadKey(true).Key == ConsoleKey.N)
+               {
+                  exitLoop = true;
+                  Console.WriteLine("Цикл прерван.");
+               }
+            }
+
+            // Имитация полезной нагрузки
+            System.Threading.Thread.Sleep(200);
+            Console.Write("_");
+         }
+
+
          Process();
       }
 
