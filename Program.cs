@@ -32,8 +32,6 @@ namespace SyncAppServer
                   Console.WriteLine("Цикл прерван.");
                }
 
-
-
                try
                {
                   // Ожидаем входящий запрос (блокирующий вызов)
@@ -50,7 +48,6 @@ namespace SyncAppServer
 
             Console.Write("_");
          }
-
 
          Process();
       }
