@@ -23,7 +23,13 @@ namespace SyncAppServer
          {
             try
             {
-               if (Console.KeyAvailable)
+               if (!Console.KeyAvailable)
+               {
+                  // Ожидаем входящий запрос (блокирующий вызов)
+                  HttpListenerContext context = listener.GetContext();
+                  ProcessRequest(context);
+               }
+               else
                {
                   ConsoleKey key = Console.ReadKey(true).Key;
                   if (key == ConsoleKey.S)
@@ -33,11 +39,6 @@ namespace SyncAppServer
                      Console.WriteLine("Цикл прерван");
                   }
                }
-
-               // Ожидаем входящий запрос (блокирующий вызов)
-               HttpListenerContext context = listener.GetContext();
-               ProcessRequest(context);
-
             }
             catch (Exception ex)
             {
