@@ -23,12 +23,25 @@ namespace SyncAppServer
          {
             try
             {
-               
-               
-               
-               
-               
-               
+               if (Console.KeyAvailable)
+               {
+                  ConsoleKey key = Console.ReadKey(true).Key;
+                  Console.WriteLine($"Нажата клавиша: {key}. Продолжить? (Y/N)");
+
+                  if (Console.ReadKey(true).Key == ConsoleKey.N)
+                  {
+                     exitLoop = true;
+                     Console.WriteLine("Цикл прерван.");
+                  }
+
+
+
+
+               }
+
+
+
+
                // Ожидаем входящий запрос (блокирующий вызов)
                HttpListenerContext context = listener.GetContext();
                ProcessRequest(context);
@@ -39,23 +52,7 @@ namespace SyncAppServer
             }
 
 
-            if (Console.KeyAvailable)
-            {
-               ConsoleKey key = Console.ReadKey(true).Key;
-               Console.WriteLine($"Нажата клавиша: {key}. Продолжить? (Y/N)");
 
-               if (Console.ReadKey(true).Key == ConsoleKey.N)
-               {
-                  exitLoop = true;
-                  Console.WriteLine("Цикл прерван.");
-               }
-
-
-
-
-            }
-
-            Console.Write("_");
          }
       }
 
