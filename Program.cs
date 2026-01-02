@@ -26,7 +26,7 @@ namespace SyncAppServer
                if (Console.KeyAvailable)
                {
                   ConsoleKey key = Console.ReadKey(true).Key;
-                  Console.WriteLine("Нажата клавиша: {0}. Продолжить? (Y/N)", key);
+                  Console.WriteLine("Нажата клавиша: {0} Продолжить? (Y/N)", key);
 
                   if (Console.ReadKey(true).Key == ConsoleKey.N)
                   {
