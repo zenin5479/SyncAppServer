@@ -31,7 +31,7 @@ namespace SyncAppServer
                   if (Console.ReadKey(true).Key == ConsoleKey.N)
                   {
                      exitLoop = true;
-                     Console.WriteLine("Цикл прерван.");
+                     Console.WriteLine("Цикл прерван");
                   }
 
 
