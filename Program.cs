@@ -23,6 +23,12 @@ namespace SyncAppServer
          {
             try
             {
+               
+               
+               
+               
+               
+               
                // Ожидаем входящий запрос (блокирующий вызов)
                HttpListenerContext context = listener.GetContext();
                ProcessRequest(context);
