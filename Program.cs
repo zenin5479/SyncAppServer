@@ -23,10 +23,15 @@ namespace SyncAppServer
          {
             try
             {
-               if (Console.ReadKey(true).Key == ConsoleKey.S)
+               if (Console.KeyAvailable)
                {
-                  exitLoop = true;
-                  Console.WriteLine("Цикл прерван");
+                  ConsoleKey key = Console.ReadKey(true).Key;
+                  if (key == ConsoleKey.S)
+                  {
+                     Console.WriteLine("Нажата клавиша: {0}", key);
+                     exitLoop = true;
+                     Console.WriteLine("Цикл прерван");
+                  }
                }
 
                // Ожидаем входящий запрос (блокирующий вызов)
