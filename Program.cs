@@ -21,6 +21,21 @@ namespace SyncAppServer
          Console.WriteLine("Цикл активен. Нажмите любую клавишу для проверки...");
          while (!exitLoop)
          {
+
+            try
+            {
+
+
+
+               // Ожидаем входящий запрос (блокирующий вызов)
+               HttpListenerContext context = listener.GetContext();
+               ProcessRequest(context);
+            }
+            catch (Exception ex)
+            {
+               Console.WriteLine("Ошибка: {0}", ex.Message);
+            }
+
             if (Console.KeyAvailable)
             {
                ConsoleKey key = Console.ReadKey(true).Key;
@@ -31,24 +46,7 @@ namespace SyncAppServer
                   exitLoop = true;
                   Console.WriteLine("Цикл прерван.");
                }
-
-
-
-               try
-               {
-                  // Ожидаем входящий запрос (блокирующий вызов)
-                  HttpListenerContext context = listener.GetContext();
-                  ProcessRequest(context);
-               }
-               catch (Exception ex)
-               {
-                  Console.WriteLine("Ошибка: {0}", ex.Message);
-               }
-
-
             }
-
-            Console.Write("_");
          }
 
 
