@@ -9,6 +9,14 @@ namespace SyncAppServer
    {
       static void Main()
       {
+         HttpListener listener = new HttpListener();
+         // Указываем префиксы для прослушивания
+         listener.Prefixes.Add("http://127.0.0.1:8080/");
+         //listener.Prefixes.Add("http://127.0.0.1:8888/connection/");
+         listener.Start();
+         Console.WriteLine("Сервер запущен на http://127.0.0.1:8080/");
+         // Синхронная обработка запросов в цикле
+
          bool exitLoop = false;
          Console.WriteLine("Цикл активен. Нажмите любую клавишу для проверки...");
          while (!exitLoop)
@@ -24,13 +32,7 @@ namespace SyncAppServer
                   Console.WriteLine("Цикл прерван.");
                }
 
-               HttpListener listener = new HttpListener();
-               // Указываем префиксы для прослушивания
-               listener.Prefixes.Add("http://127.0.0.1:8080/");
-               //listener.Prefixes.Add("http://127.0.0.1:8888/connection/");
-               listener.Start();
-               Console.WriteLine("Сервер запущен на http://127.0.0.1:8080/");
-               // Синхронная обработка запросов в цикле
+
 
                try
                {
@@ -56,7 +58,7 @@ namespace SyncAppServer
       static void Process()
       {
 
-         
+
       }
 
       static void ProcessRequest(HttpListenerContext context)
