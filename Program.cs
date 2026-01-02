@@ -23,6 +23,27 @@ namespace SyncAppServer
                   exitLoop = true;
                   Console.WriteLine("Цикл прерван.");
                }
+
+               HttpListener listener = new HttpListener();
+               // Указываем префиксы для прослушивания
+               listener.Prefixes.Add("http://127.0.0.1:8080/");
+               //listener.Prefixes.Add("http://127.0.0.1:8888/connection/");
+               listener.Start();
+               Console.WriteLine("Сервер запущен на http://127.0.0.1:8080/");
+               // Синхронная обработка запросов в цикле
+
+               try
+               {
+                  // Ожидаем входящий запрос (блокирующий вызов)
+                  HttpListenerContext context = listener.GetContext();
+                  ProcessRequest(context);
+               }
+               catch (Exception ex)
+               {
+                  Console.WriteLine("Ошибка: {0}", ex.Message);
+               }
+
+
             }
 
             Console.Write("_");
@@ -34,26 +55,8 @@ namespace SyncAppServer
 
       static void Process()
       {
-         HttpListener listener = new HttpListener();
-         // Указываем префиксы для прослушивания
-         listener.Prefixes.Add("http://127.0.0.1:8080/");
-         //listener.Prefixes.Add("http://127.0.0.1:8888/connection/");
-         listener.Start();
-         Console.WriteLine("Сервер запущен на http://127.0.0.1:8080/");
-         // Синхронная обработка запросов в цикле
-         while (true)
-         {
-            try
-            {
-               // Ожидаем входящий запрос (блокирующий вызов)
-               HttpListenerContext context = listener.GetContext();
-               ProcessRequest(context);
-            }
-            catch (Exception ex)
-            {
-               Console.WriteLine("Ошибка: {0}", ex.Message);
-            }
-         }
+
+         
       }
 
       static void ProcessRequest(HttpListenerContext context)
