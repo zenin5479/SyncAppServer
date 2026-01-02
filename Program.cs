@@ -11,12 +11,11 @@ namespace SyncAppServer
       {
          bool exitLoop = false;
          Console.WriteLine("Цикл активен. Нажмите любую клавишу для проверки...");
-
          while (!exitLoop)
          {
             if (Console.KeyAvailable)
             {
-               var key = Console.ReadKey(true).Key;
+               ConsoleKey key = Console.ReadKey(true).Key;
                Console.WriteLine($"Нажата клавиша: {key}. Продолжить? (Y/N)");
 
                if (Console.ReadKey(true).Key == ConsoleKey.N)
