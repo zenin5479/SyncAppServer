@@ -18,20 +18,15 @@ namespace SyncAppServer
          // Синхронная обработка запросов в цикле
 
          bool exitLoop = false;
-         Console.WriteLine("Цикл активен. Нажмите любую клавишу для проверки...");
+         Console.WriteLine("Цикл активен. Нажмите клавишу S для остановки");
          while (!exitLoop)
          {
             try
             {
-               if (Console.KeyAvailable)
+               if (Console.ReadKey(true).Key == ConsoleKey.S)
                {
-                  ConsoleKey key = Console.ReadKey(true).Key;
-                  Console.WriteLine("Нажата клавиша: {0} Продолжить? (Y/N)", key);
-                  if (Console.ReadKey(true).Key == ConsoleKey.N)
-                  {
-                     exitLoop = true;
-                     Console.WriteLine("Цикл прерван");
-                  }
+                  exitLoop = true;
+                  Console.WriteLine("Цикл прерван");
                }
 
                // Ожидаем входящий запрос (блокирующий вызов)
