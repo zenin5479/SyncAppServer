@@ -25,8 +25,6 @@ namespace SyncAppServer
                }
             }
 
-            // Имитация полезной нагрузки
-            System.Threading.Thread.Sleep(200);
             Console.Write("_");
          }
 
