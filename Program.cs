@@ -50,11 +50,9 @@ namespace SyncAppServer
       {
          HttpListenerRequest request = context.Request;
          HttpListenerResponse response = context.Response;
-
          // Настройка ответа
          response.ContentType = "application/json";
          response.ContentEncoding = Encoding.UTF8;
-
          string responseString;
          try
          {
@@ -96,7 +94,6 @@ namespace SyncAppServer
          response.ContentLength64 = buffer.Length;
          response.OutputStream.Write(buffer, 0, buffer.Length);
          response.OutputStream.Close();
-
          // Логирование
          Console.WriteLine("{0} {1} {2} -> {3}", DateTime.Now, request.HttpMethod, request.Url, response.StatusCode);
       }
