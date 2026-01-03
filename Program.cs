@@ -11,6 +11,7 @@ namespace SyncAppServer
       {
          HttpListener listener = new HttpListener();
          // Указываем префиксы для прослушивания
+         string Prefixes = "http://127.0.0.1:8080/";
          listener.Prefixes.Add("http://127.0.0.1:8080/");
          //listener.Prefixes.Add("http://127.0.0.1:8888/connection/");
          listener.Start();
