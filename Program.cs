@@ -15,7 +15,7 @@ namespace SyncAppServer
          listener.Prefixes.Add(prefixes);
          //listener.Prefixes.Add("http://127.0.0.1:8888/connection/");
          listener.Start();
-         Console.WriteLine("Сервер запущен на http://127.0.0.1:8080/");
+         Console.WriteLine("Сервер запущен на {0}", prefixes);
          // Синхронная обработка запросов в цикле
          bool exitLoop = false;
          Console.WriteLine("Цикл активен. Нажмите клавишу S для остановки");
