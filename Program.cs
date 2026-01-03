@@ -16,7 +16,6 @@ namespace SyncAppServer
          listener.Start();
          Console.WriteLine("Сервер запущен на http://127.0.0.1:8080/");
          // Синхронная обработка запросов в цикле
-
          bool exitLoop = false;
          Console.WriteLine("Цикл активен. Нажмите клавишу S для остановки");
          while (!exitLoop)
