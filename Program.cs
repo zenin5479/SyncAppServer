@@ -65,13 +65,13 @@ namespace SyncAppServer
                else
                {
                   Console.WriteLine("Нажата клавиша: {0}", key);
-                     exitLoop = true;
-                     Console.WriteLine("Цикл остановлен");
-                  
+                  exitLoop = true;
+                  Console.WriteLine("Цикл остановлен");
+
                   ConsoleKey key = Console.ReadKey(true).Key;
                   if (key == ConsoleKey.S)
                   {
-                     
+
                   }
                }
             }
