@@ -29,7 +29,7 @@ namespace SyncAppServer
                if (Console.KeyAvailable)
                {
                   // Считываем клавишу без вывода
-                  //Console.ReadKey(intercept: true);
+                  Console.ReadKey(intercept: true);
                   // Очищаем буфер клавиши
                   //Console.ReadKey(true);
                   // Меняем условие — цикл завершится
