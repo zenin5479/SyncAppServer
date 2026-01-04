@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading;
 
 namespace SyncAppServer
 {
@@ -19,6 +20,57 @@ namespace SyncAppServer
          // Синхронная обработка запросов в цикле
          bool exitLoop = false;
          Console.WriteLine("Цикл активен. Нажмите клавишу S для остановки");
+
+         bool isRunning = true; // Флаг продолжения цикла
+
+         Console.WriteLine("Нажмите любую клавишу для остановки цикла...");
+
+         while (isRunning)
+         {
+            // Ваш код цикла
+            Console.Write(".");
+            Thread.Sleep(500); // Имитация работы
+
+            // Проверка нажатия клавиши
+            if (Console.KeyAvailable)
+            {
+               Console.ReadKey(intercept: true); // Считываем клавишу без вывода
+               isRunning = false; // Меняем условие — цикл завершится
+            }
+         }
+
+         Console.WriteLine("Цикл остановлен.");
+
+
+         // 
+         while (!exitLoop)
+         {
+            try
+            {
+               if (!Console.KeyAvailable)
+               {
+                  // Ожидаем входящий запрос (блокирующий вызов)
+                  HttpListenerContext context = listener.GetContext();
+                  ProcessRequest(context);
+               }
+               else
+               {
+                  ConsoleKey key = Console.ReadKey(true).Key;
+                  if (key == ConsoleKey.S)
+                  {
+                     Console.WriteLine("Нажата клавиша: {0}", key);
+                     exitLoop = true;
+                     Console.WriteLine("Цикл прерван");
+                  }
+               }
+            }
+            catch (Exception ex)
+            {
+               Console.WriteLine("Ошибка: {0}", ex.Message);
+            }
+         }
+
+
          while (!exitLoop)
          {
             try
