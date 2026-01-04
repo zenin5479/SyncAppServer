@@ -49,10 +49,7 @@ namespace SyncAppServer
             }
          }
 
-
-
-
-         // Вариант 1 остановка цикла при нажатии клавиши "С"
+         // Вариант 2 остановка цикла при нажатии клавиши "С"
          //Console.WriteLine("Цикл активен. Нажмите клавишу С для цикла");
          //Флаг продолжения цикла
          //bool exitLoop = false;
@@ -82,8 +79,6 @@ namespace SyncAppServer
          //      Console.WriteLine("Ошибка: {0}", ex.Message);
          //   }
          //}
-
-
       }
 
       static void ProcessRequest(HttpListenerContext context)
