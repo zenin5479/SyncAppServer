@@ -50,7 +50,7 @@ namespace SyncAppServer
          //}
 
          // Вариант 2 остановка цикла при нажатии любой клавиши
-         Console.WriteLine("Цикл активен. Нажмите любую клавишу для остановки цикла...");
+         Console.WriteLine("Цикл активен. Нажмите любую клавишу для остановки цикла");
          bool exitLoop = false;
          while (!exitLoop)
          {
@@ -64,12 +64,14 @@ namespace SyncAppServer
                }
                else
                {
+                  Console.WriteLine("Нажата клавиша: {0}", key);
+                     exitLoop = true;
+                     Console.WriteLine("Цикл остановлен");
+                  
                   ConsoleKey key = Console.ReadKey(true).Key;
                   if (key == ConsoleKey.S)
                   {
-                     Console.WriteLine("Нажата клавиша: {0}", key);
-                     exitLoop = true;
-                     Console.WriteLine("Цикл остановлен");
+                     
                   }
                }
             }
