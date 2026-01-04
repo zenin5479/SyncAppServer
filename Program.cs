@@ -21,25 +21,7 @@ namespace SyncAppServer
          bool exitLoop = false;
          Console.WriteLine("Цикл активен. Нажмите клавишу S для остановки");
 
-         bool isRunning = true; // Флаг продолжения цикла
 
-         Console.WriteLine("Нажмите любую клавишу для остановки цикла...");
-
-         while (isRunning)
-         {
-            // Ваш код цикла
-            Console.Write(".");
-            Thread.Sleep(500); // Имитация работы
-
-            // Проверка нажатия клавиши
-            if (Console.KeyAvailable)
-            {
-               Console.ReadKey(intercept: true); // Считываем клавишу без вывода
-               isRunning = false; // Меняем условие — цикл завершится
-            }
-         }
-
-         Console.WriteLine("Цикл остановлен.");
 
 
          // Вариант 1 остановка цикла при нажатии клавиши "С"
@@ -60,7 +42,7 @@ namespace SyncAppServer
          //         {
          //            Console.WriteLine("Нажата клавиша: {0}", key);
          //            exitLoop = true;
-         //            Console.WriteLine("Цикл прерван");
+         //            Console.WriteLine("Цикл остановлен");
          //         }
          //      }
          //   }
@@ -70,7 +52,7 @@ namespace SyncAppServer
          //   }
          //}
 
-         // Вариант 1 остановка цикла при нажатии любой клавиши
+         // Вариант 2 остановка цикла при нажатии любой клавиши
          while (!exitLoop)
          {
             try
@@ -88,7 +70,7 @@ namespace SyncAppServer
                   {
                      Console.WriteLine("Нажата клавиша: {0}", key);
                      exitLoop = true;
-                     Console.WriteLine("Цикл прерван");
+                     Console.WriteLine("Цикл остановлен");
                   }
                }
             }
@@ -96,7 +78,25 @@ namespace SyncAppServer
             {
                Console.WriteLine("Ошибка: {0}", ex.Message);
             }
+         } 
+         
+         bool isRunning = true; // Флаг продолжения цикла
+         Console.WriteLine("Нажмите любую клавишу для остановки цикла...");
+         while (isRunning)
+         {
+            // Ваш код цикла
+            Console.Write(".");
+            Thread.Sleep(500); // Имитация работы
+
+            // Проверка нажатия клавиши
+            if (Console.KeyAvailable)
+            {
+               Console.ReadKey(intercept: true); // Считываем клавишу без вывода
+               isRunning = false; // Меняем условие — цикл завершится
+            }
          }
+
+         Console.WriteLine("Цикл остановлен.");
       }
 
       static void ProcessRequest(HttpListenerContext context)
