@@ -67,6 +67,7 @@ namespace SyncAppServer
                else
                {
                   // Считываем клавишу без вывода
+
                   Console.ReadKey(intercept: true);
                   // Меняем условие — цикл завершится
                   exitLoop = true;
@@ -78,6 +79,9 @@ namespace SyncAppServer
                Console.WriteLine("Ошибка: {0}", ex.Message);
             }
          }
+
+         Console.ReadKey(true); // Очищаем буфер клавиши
+         Console.WriteLine("\nЦикл остановлен!");
       }
 
       static void ProcessRequest(HttpListenerContext context)
