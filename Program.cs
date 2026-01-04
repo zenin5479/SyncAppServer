@@ -19,10 +19,9 @@ namespace SyncAppServer
          Console.WriteLine("Сервер запущен на {0}", prefixes);
          // Синхронная обработка запросов в цикле
 
-
          // Вариант 1 остановка цикла при нажатии клавиши "С"
-         Console.WriteLine("Цикл активен. Нажмите клавишу С для остановки");
-         bool exitLoop = false;
+         //Console.WriteLine("Цикл активен. Нажмите клавишу С для остановки");
+         //bool exitLoop = false;
          //while (!exitLoop)
          //{
          //   try
