@@ -21,6 +21,7 @@ namespace SyncAppServer
 
          // Вариант 1 остановка цикла при нажатии клавиши "С"
          //Console.WriteLine("Цикл активен. Нажмите клавишу С для цикла");
+         // Флаг продолжения цикла
          //bool exitLoop = false;
          //while (!exitLoop)
          //{
@@ -51,6 +52,7 @@ namespace SyncAppServer
 
          // Вариант 2 остановка цикла при нажатии любой клавиши
          Console.WriteLine("Цикл активен. Нажмите любую клавишу для остановки цикла");
+         // Флаг продолжения цикла
          bool exitLoop = false;
          while (!exitLoop)
          {
