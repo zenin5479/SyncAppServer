@@ -43,32 +43,32 @@ namespace SyncAppServer
 
 
          // Вариант 1 остановка цикла при нажатии клавиши "С"
-         while (!exitLoop)
-         {
-            try
-            {
-               if (!Console.KeyAvailable)
-               {
-                  // Ожидаем входящий запрос (блокирующий вызов)
-                  HttpListenerContext context = listener.GetContext();
-                  ProcessRequest(context);
-               }
-               else
-               {
-                  ConsoleKey key = Console.ReadKey(true).Key;
-                  if (key == ConsoleKey.C)
-                  {
-                     Console.WriteLine("Нажата клавиша: {0}", key);
-                     exitLoop = true;
-                     Console.WriteLine("Цикл прерван");
-                  }
-               }
-            }
-            catch (Exception ex)
-            {
-               Console.WriteLine("Ошибка: {0}", ex.Message);
-            }
-         }
+         //while (!exitLoop)
+         //{
+         //   try
+         //   {
+         //      if (!Console.KeyAvailable)
+         //      {
+         //         // Ожидаем входящий запрос (блокирующий вызов)
+         //         HttpListenerContext context = listener.GetContext();
+         //         ProcessRequest(context);
+         //      }
+         //      else
+         //      {
+         //         ConsoleKey key = Console.ReadKey(true).Key;
+         //         if (key == ConsoleKey.C)
+         //         {
+         //            Console.WriteLine("Нажата клавиша: {0}", key);
+         //            exitLoop = true;
+         //            Console.WriteLine("Цикл прерван");
+         //         }
+         //      }
+         //   }
+         //   catch (Exception ex)
+         //   {
+         //      Console.WriteLine("Ошибка: {0}", ex.Message);
+         //   }
+         //}
 
 
          while (!exitLoop)
