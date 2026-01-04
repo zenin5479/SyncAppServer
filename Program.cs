@@ -64,13 +64,11 @@ namespace SyncAppServer
                }
                else
                {
-                 // Считываем клавишу без вывода
-                     Console.ReadKey(intercept: true);
-// Меняем условие — цикл завершится
+                  // Считываем клавишу без вывода
+                  Console.ReadKey(intercept: true);
+                  // Меняем условие — цикл завершится
                   exitLoop = true;
                   Console.WriteLine("Цикл остановлен");
-
-
                }
             }
             catch (Exception ex)
