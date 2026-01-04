@@ -78,28 +78,6 @@ namespace SyncAppServer
                Console.WriteLine("Ошибка: {0}", ex.Message);
             }
          }
-
-         // Флаг продолжения цикла
-         bool isRunning = true;
-         Console.WriteLine("Нажмите любую клавишу для остановки цикла...");
-         while (isRunning)
-         {
-            // Ваш код цикла
-            Console.Write(".");
-            // Имитация работы
-            Thread.Sleep(500);
-
-            // Проверка нажатия клавиши
-            if (Console.KeyAvailable)
-            {
-               // Считываем клавишу без вывода
-               Console.ReadKey(intercept: true);
-               // Меняем условие — цикл завершится
-               isRunning = false;
-            }
-         }
-
-         Console.WriteLine("Цикл остановлен");
       }
 
       static void ProcessRequest(HttpListenerContext context)
