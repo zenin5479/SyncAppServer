@@ -53,6 +53,8 @@ namespace SyncAppServer
          //}
 
          // Вариант 2 остановка цикла при нажатии любой клавиши
+
+
          while (!exitLoop)
          {
             try
@@ -78,21 +80,25 @@ namespace SyncAppServer
             {
                Console.WriteLine("Ошибка: {0}", ex.Message);
             }
-         } 
-         
-         bool isRunning = true; // Флаг продолжения цикла
+         }
+
+         // Флаг продолжения цикла
+         bool isRunning = true;
          Console.WriteLine("Нажмите любую клавишу для остановки цикла...");
          while (isRunning)
          {
             // Ваш код цикла
             Console.Write(".");
-            Thread.Sleep(500); // Имитация работы
+            // Имитация работы
+            Thread.Sleep(500);
 
             // Проверка нажатия клавиши
             if (Console.KeyAvailable)
             {
-               Console.ReadKey(intercept: true); // Считываем клавишу без вывода
-               isRunning = false; // Меняем условие — цикл завершится
+               // Считываем клавишу без вывода
+               Console.ReadKey(intercept: true);
+               // Меняем условие — цикл завершится
+               isRunning = false;
             }
          }
 
