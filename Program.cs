@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Threading;
 
 namespace SyncAppServer
 {
@@ -67,8 +66,9 @@ namespace SyncAppServer
                else
                {
                   // Считываем клавишу без вывода
-
                   Console.ReadKey(intercept: true);
+                  // Очищаем буфер клавиши
+                  Console.ReadKey(true);
                   // Меняем условие — цикл завершится
                   exitLoop = true;
                   Console.WriteLine("Цикл остановлен");
@@ -80,7 +80,7 @@ namespace SyncAppServer
             }
          }
 
-         Console.ReadKey(true); // Очищаем буфер клавиши
+
          Console.WriteLine("\nЦикл остановлен!");
       }
 
