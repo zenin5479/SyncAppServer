@@ -42,7 +42,7 @@ namespace SyncAppServer
          Console.WriteLine("Цикл остановлен.");
 
 
-         // Вариант 1 остановка цикла 
+         // Вариант 1 остановка цикла при нажатии клавиши С
          while (!exitLoop)
          {
             try
@@ -56,7 +56,7 @@ namespace SyncAppServer
                else
                {
                   ConsoleKey key = Console.ReadKey(true).Key;
-                  if (key == ConsoleKey.S)
+                  if (key == ConsoleKey.C)
                   {
                      Console.WriteLine("Нажата клавиша: {0}", key);
                      exitLoop = true;
