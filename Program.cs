@@ -18,38 +18,7 @@ namespace SyncAppServer
          Console.WriteLine("Сервер запущен на {0}", prefixes);
          // Синхронная обработка запросов в цикле
 
-         // Вариант 1 остановка цикла при нажатии клавиши "С"
-         Console.WriteLine("Цикл активен. Нажмите клавишу С для цикла");
-         //Флаг продолжения цикла
-         bool exitLoop = false;
-         while (!exitLoop)
-         {
-            try
-            {
-               if (Console.KeyAvailable)
-               {
-                  ConsoleKey key = Console.ReadKey(true).Key;
-                  if (key == ConsoleKey.C)
-                  {
-                     Console.WriteLine("Нажата клавиша: {0}", key);
-                     exitLoop = true;
-                     Console.WriteLine("Цикл остановлен");
-                  }
-               }
-               else
-               {
-                  // Ожидаем входящий запрос (блокирующий вызов)
-                  HttpListenerContext context = listener.GetContext();
-                  ProcessRequest(context);
-               }
-            }
-            catch (Exception ex)
-            {
-               Console.WriteLine("Ошибка: {0}", ex.Message);
-            }
-         }
-
-         // Вариант 2 остановка цикла при нажатии любой клавиши
+          // Вариант 1 остановка цикла при нажатии любой клавиши
          //Console.WriteLine("Цикл активен. Нажмите любую клавишу для остановки цикла");
          // Флаг продолжения цикла
          //bool exitLoop = false;
@@ -79,6 +48,42 @@ namespace SyncAppServer
          //      Console.WriteLine("Ошибка: {0}", ex.Message);
          //   }
          //}
+         
+         
+         
+         
+         // Вариант 1 остановка цикла при нажатии клавиши "С"
+         //Console.WriteLine("Цикл активен. Нажмите клавишу С для цикла");
+         //Флаг продолжения цикла
+         //bool exitLoop = false;
+         //while (!exitLoop)
+         //{
+         //   try
+         //   {
+         //      if (Console.KeyAvailable)
+         //      {
+         //         ConsoleKey key = Console.ReadKey(true).Key;
+         //         if (key == ConsoleKey.C)
+         //         {
+         //            Console.WriteLine("Нажата клавиша: {0}", key);
+         //            exitLoop = true;
+         //            Console.WriteLine("Цикл остановлен");
+         //         }
+         //      }
+         //      else
+         //      {
+         //         // Ожидаем входящий запрос (блокирующий вызов)
+         //         HttpListenerContext context = listener.GetContext();
+         //         ProcessRequest(context);
+         //      }
+         //   }
+         //   catch (Exception ex)
+         //   {
+         //      Console.WriteLine("Ошибка: {0}", ex.Message);
+         //   }
+         //}
+
+        
       }
 
       static void ProcessRequest(HttpListenerContext context)
