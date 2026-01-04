@@ -70,7 +70,7 @@ namespace SyncAppServer
          //   }
          //}
 
-
+         // Вариант 1 остановка цикла при нажатии клавиши "С"
          while (!exitLoop)
          {
             try
