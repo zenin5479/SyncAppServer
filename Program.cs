@@ -64,15 +64,13 @@ namespace SyncAppServer
                }
                else
                {
-                  Console.WriteLine("Нажата клавиша: {0}", key);
+                 // Считываем клавишу без вывода
+                     Console.ReadKey(intercept: true);
+// Меняем условие — цикл завершится
                   exitLoop = true;
                   Console.WriteLine("Цикл остановлен");
 
-                  ConsoleKey key = Console.ReadKey(true).Key;
-                  if (key == ConsoleKey.S)
-                  {
 
-                  }
                }
             }
             catch (Exception ex)
