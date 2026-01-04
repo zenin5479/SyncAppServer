@@ -42,7 +42,7 @@ namespace SyncAppServer
          Console.WriteLine("Цикл остановлен.");
 
 
-         // 
+         // Вариант 1 остановка цикла 
          while (!exitLoop)
          {
             try
