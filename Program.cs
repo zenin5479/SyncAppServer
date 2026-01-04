@@ -19,12 +19,13 @@ namespace SyncAppServer
          Console.WriteLine("Сервер запущен на {0}", prefixes);
          // Синхронная обработка запросов в цикле
          bool exitLoop = false;
-         Console.WriteLine("Цикл активен. Нажмите клавишу S для остановки");
+         Console.WriteLine("Цикл активен. Нажмите клавишу С для остановки");
 
 
 
 
          // Вариант 1 остановка цикла при нажатии клавиши "С"
+         Console.WriteLine("Цикл активен. Нажмите клавишу С для остановки");
          //while (!exitLoop)
          //{
          //   try
@@ -54,7 +55,7 @@ namespace SyncAppServer
 
          // Вариант 2 остановка цикла при нажатии любой клавиши
 
-
+         Console.WriteLine("Цикл активен. Нажмите клавишу С для остановки");
          while (!exitLoop)
          {
             try
@@ -102,7 +103,7 @@ namespace SyncAppServer
             }
          }
 
-         Console.WriteLine("Цикл остановлен.");
+         Console.WriteLine("Цикл остановлен");
       }
 
       static void ProcessRequest(HttpListenerContext context)
