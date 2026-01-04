@@ -57,21 +57,21 @@ namespace SyncAppServer
          {
             try
             {
-               if (!Console.KeyAvailable)
-               {
-                  // Ожидаем входящий запрос (блокирующий вызов)
-                  HttpListenerContext context = listener.GetContext();
-                  ProcessRequest(context);
-               }
-               else
+               if (Console.KeyAvailable)
                {
                   // Считываем клавишу без вывода
                   Console.ReadKey(intercept: true);
                   // Очищаем буфер клавиши
-                  Console.ReadKey(true);
+                  //Console.ReadKey(true);
                   // Меняем условие — цикл завершится
                   exitLoop = true;
                   Console.WriteLine("Цикл остановлен");
+               }
+               else
+               {
+                  // Ожидаем входящий запрос (блокирующий вызов)
+                  HttpListenerContext context = listener.GetContext();
+                  ProcessRequest(context);
                }
             }
             catch (Exception ex)
@@ -79,9 +79,6 @@ namespace SyncAppServer
                Console.WriteLine("Ошибка: {0}", ex.Message);
             }
          }
-
-
-         Console.WriteLine("\nЦикл остановлен!");
       }
 
       static void ProcessRequest(HttpListenerContext context)
