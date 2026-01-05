@@ -15,11 +15,11 @@ namespace SyncAppServer
          listener.Prefixes.Add(prefixes);
          listener.Start();
          Console.WriteLine("Сервер запущен на {0}", prefixes);
-         // Синхронная обработка запросов в цикле
 
          Console.WriteLine("Цикл активен. Нажмите любую клавишу для остановки цикла");
          // Флаг продолжения цикла
          bool exitLoop = false;
+         // Синхронная обработка запросов в цикле
          while (!exitLoop)
          {
             try
