@@ -17,8 +17,7 @@ namespace SyncAppServer
          listener.Start();
          Console.WriteLine("Сервер запущен на {0}", prefixes);
          // Синхронная обработка запросов в цикле
-
-         // Вариант 1 остановка цикла при нажатии любой клавиши
+         
          Console.WriteLine("Цикл активен. Нажмите любую клавишу для остановки цикла");
          // Флаг продолжения цикла
          bool exitLoop = false;
@@ -28,11 +27,6 @@ namespace SyncAppServer
             {
                if (Console.KeyAvailable)
                {
-                  // Считываем клавишу без вывода
-                  //Console.ReadKey(intercept: true);
-                  // Очищаем буфер клавиши
-                  //Console.ReadKey(true);
-
                   // Меняем условие — цикл завершится
                   exitLoop = true;
                   Console.WriteLine("Цикл остановлен");
