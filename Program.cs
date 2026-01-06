@@ -19,10 +19,12 @@ namespace SyncAppServer
          // Флаг продолжения цикла
          bool exitLoop = false;
          // Синхронная обработка запросов в цикле
+         
          try
          {
             if (Console.KeyAvailable)
             {
+
                while (!exitLoop)
                {
                   try
