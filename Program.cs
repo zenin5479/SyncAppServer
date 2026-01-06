@@ -19,60 +19,28 @@ namespace SyncAppServer
          // Флаг продолжения цикла
          bool exitLoop = false;
          // Синхронная обработка запросов в цикле
-         
-         try
+         while (!exitLoop)
          {
-            if (Console.KeyAvailable)
+            try
             {
-
-               while (!exitLoop)
+               if (Console.KeyAvailable)
                {
-                  try
-                  {
-                     if (Console.KeyAvailable)
-                     {
-
-
-
-
-
-
-                        // Меняем условие — цикл завершится
-                        exitLoop = true;
-                        Console.WriteLine("Цикл остановлен");
-                     }
-                     else
-                     {
-                        // Ожидаем входящий запрос (блокирующий вызов)
-                        HttpListenerContext context = listener.GetContext();
-                        ProcessRequest(context);
-                     }
-                  }
-                  catch (Exception ex)
-                  {
-                     Console.WriteLine("Ошибка: {0}", ex.Message);
-                  }
+                  // Меняем условие — цикл завершится
+                  exitLoop = true;
+                  Console.WriteLine("Цикл остановлен");
                }
-
-
-
-
-               // Меняем условие — цикл завершится
-               exitLoop = true;
-               Console.WriteLine("Цикл остановлен");
+               else
+               {
+                  // Ожидаем входящий запрос (блокирующий вызов)
+                  HttpListenerContext context = listener.GetContext();
+                  ProcessRequest(context);
+               }
             }
-            else
+            catch (Exception ex)
             {
-               // Ожидаем входящий запрос (блокирующий вызов)
-               HttpListenerContext context = listener.GetContext();
-               ProcessRequest(context);
+               Console.WriteLine("Ошибка: {0}", ex.Message);
             }
          }
-         catch (Exception ex)
-         {
-            Console.WriteLine("Ошибка: {0}", ex.Message);
-         }
-
 
          //Console.ReadKey();
 
