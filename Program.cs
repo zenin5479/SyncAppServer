@@ -42,12 +42,12 @@ namespace SyncAppServer
             }
          }
 
-         Console.ReadKey();
+         //Console.ReadKey();
 
          // Считываем клавишу без вывода
          Console.ReadKey(intercept: true);
          // Очищаем буфер клавиши
-         Console.ReadKey(true);
+         //Console.ReadKey(true);
       }
 
       static void ProcessRequest(HttpListenerContext context)
