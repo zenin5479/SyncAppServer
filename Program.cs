@@ -20,7 +20,7 @@ namespace SyncAppServer
          bool exitLoop = false;
          bool keyAvailable = Console.KeyAvailable;
          // Синхронная обработка запросов в цикле
-         while (!exitLoop && !keyAvailable)
+         while (!keyAvailable)
          {
             try
             {
