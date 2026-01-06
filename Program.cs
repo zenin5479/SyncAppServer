@@ -20,27 +20,31 @@ namespace SyncAppServer
          bool exitLoop = false;
          bool keyAvailable = Console.KeyAvailable;
          // Синхронная обработка запросов в цикле
-         while (!keyAvailable)
+
+         if (keyAvailable)
          {
-            try
+            while (!exitLoop)
             {
-               if ()
-               {
-                  // Меняем условие — цикл завершится
-                  exitLoop = true;
-                  Console.WriteLine("Цикл остановлен");
-               }
-               else
+               try
                {
                   // Ожидаем входящий запрос (блокирующий вызов)
                   HttpListenerContext context = listener.GetContext();
                   ProcessRequest(context);
                }
+               catch (Exception ex)
+               {
+                  Console.WriteLine("Ошибка: {0}", ex.Message);
+                  // Меняем условие — цикл завершится
+                  exitLoop = true;
+                  Console.WriteLine("Цикл остановлен");
+               }
             }
-            catch (Exception ex)
-            {
-               Console.WriteLine("Ошибка: {0}", ex.Message);
-            }
+         }
+         else
+         {
+            // Меняем условие — цикл завершится
+            exitLoop = true;
+            Console.WriteLine("Цикл остановлен");
          }
 
          //Console.ReadKey();
