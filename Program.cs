@@ -25,6 +25,8 @@ namespace SyncAppServer
             {
                if (Console.KeyAvailable)
                {
+                  
+                  
                   // Меняем условие — цикл завершится
                   exitLoop = true;
                   Console.WriteLine("Цикл остановлен");
