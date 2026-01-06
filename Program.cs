@@ -26,153 +26,166 @@ namespace SyncAppServer
                while (!exitLoop)
                {
 
-                  
+                  if (Console.KeyAvailable)
+                  {
+
+
+
+
+
+
+                     // Меняем условие — цикл завершится
+                     exitLoop = true;
+                     Console.WriteLine("Цикл остановлен");
+                  }
+                  else
+                  {
                      // Ожидаем входящий запрос (блокирующий вызов)
                      HttpListenerContext context = listener.GetContext();
                      ProcessRequest(context);
                   }
+               
 
-
-               }
-
-
-
-
-               // Меняем условие — цикл завершится
-               exitLoop = true;
-               Console.WriteLine("Цикл остановлен");
             }
-            else
-            {
-               // Ожидаем входящий запрос (блокирующий вызов)
-               HttpListenerContext context = listener.GetContext();
-               ProcessRequest(context);
-            }
+
+
+
+
+            // Меняем условие — цикл завершится
+            exitLoop = true;
+            Console.WriteLine("Цикл остановлен");
          }
+            else
+         {
+            // Ожидаем входящий запрос (блокирующий вызов)
+            HttpListenerContext context = listener.GetContext();
+            ProcessRequest(context);
+         }
+      }
          catch (Exception ex)
          {
             Console.WriteLine("Ошибка: {0}", ex.Message);
          }
 
 
-         //Console.ReadKey();
+   //Console.ReadKey();
 
-         // Считываем клавишу без вывода
-         Console.ReadKey(intercept: true);
+   // Считываем клавишу без вывода
+   Console.ReadKey(intercept: true);
          // Очищаем буфер клавиши
          //Console.ReadKey(true);
       }
 
-      static void ProcessRequest(HttpListenerContext context)
+static void ProcessRequest(HttpListenerContext context)
+{
+   HttpListenerRequest request = context.Request;
+   HttpListenerResponse response = context.Response;
+   // Настройка ответа
+   response.ContentType = "application/json";
+   response.ContentEncoding = Encoding.UTF8;
+   string responseString;
+   try
+   {
+      // Обработка методов
+      if (request.HttpMethod == "GET")
       {
-         HttpListenerRequest request = context.Request;
-         HttpListenerResponse response = context.Response;
-         // Настройка ответа
-         response.ContentType = "application/json";
-         response.ContentEncoding = Encoding.UTF8;
-         string responseString;
-         try
-         {
-            // Обработка методов
-            if (request.HttpMethod == "GET")
-            {
-               responseString = HandleGet(request);
-               response.StatusCode = (int)HttpStatusCode.OK;
-            }
-            else if (request.HttpMethod == "POST")
-            {
-               responseString = HandlePost(request);
-               response.StatusCode = (int)HttpStatusCode.Created;
-            }
-            else if (request.HttpMethod == "PUT")
-            {
-               responseString = HandlePut(request);
-               response.StatusCode = (int)HttpStatusCode.OK;
-            }
-            else if (request.HttpMethod == "DELETE")
-            {
-               responseString = HandleDelete(request);
-               response.StatusCode = (int)HttpStatusCode.NoContent;
-            }
-            else
-            {
-               responseString = "{\"error\":\"Method not supported\"}";
-               response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
-            }
-         }
-         catch (Exception ex)
-         {
-            responseString = string.Format("{{\"error\":\"{0}\"}}", ex.Message);
-            response.StatusCode = (int)HttpStatusCode.InternalServerError;
-         }
-
-         // Запись ответа
-         byte[] buffer = Encoding.UTF8.GetBytes(responseString);
-         response.ContentLength64 = buffer.Length;
-         response.OutputStream.Write(buffer, 0, buffer.Length);
-         response.OutputStream.Close();
-         // Логирование
-         Console.WriteLine("{0} {1} {2} -> {3}", DateTime.Now, request.HttpMethod, request.Url, response.StatusCode);
+         responseString = HandleGet(request);
+         response.StatusCode = (int)HttpStatusCode.OK;
       }
-
-      static string HandleGet(HttpListenerRequest request)
+      else if (request.HttpMethod == "POST")
       {
-         // Пример: извлечение параметров запроса
-         string name = request.QueryString["name"];
-         if (name == null)
-         {
-            name = "world";
-         }
-
-         return string.Format("{{\"message\":\"Hello {0}\", \"method\":\"GET\", \"timestamp\":\"{1}\"}}",
-            name,
-            DateTime.Now);
+         responseString = HandlePost(request);
+         response.StatusCode = (int)HttpStatusCode.Created;
       }
-
-      static string HandlePost(HttpListenerRequest request)
+      else if (request.HttpMethod == "PUT")
       {
-         // Чтение тела запроса
-         string body;
-         using (StreamReader reader = new StreamReader(request.InputStream, request.ContentEncoding))
-         {
-            body = reader.ReadToEnd();
-         }
-
-         return string.Format("{{\"message\":\"Data received\", \"method\":\"POST\", \"data\":{0}, \"timestamp\":\"{1}\"}}",
-            body,
-            DateTime.Now);
+         responseString = HandlePut(request);
+         response.StatusCode = (int)HttpStatusCode.OK;
       }
-
-      static string HandlePut(HttpListenerRequest request)
+      else if (request.HttpMethod == "DELETE")
       {
-         string body;
-         using (StreamReader reader = new StreamReader(request.InputStream, request.ContentEncoding))
-         {
-            body = reader.ReadToEnd();
-         }
-
-         // Пример обработки (обычно обновление ресурса)
-         return string.Format("{{\"message\":\"Resource updated\", \"method\":\"PUT\", \"data\":{0}, \"timestamp\":\"{1}\"}}",
-            body,
-            DateTime.Now);
+         responseString = HandleDelete(request);
+         response.StatusCode = (int)HttpStatusCode.NoContent;
       }
-
-      static string HandleDelete(HttpListenerRequest request)
+      else
       {
-         // Удаление ресурса по ID из URL
-         string resourceId;
-         if (request.Url.Segments.Length > 1)
-         {
-            resourceId = request.Url.Segments[1];
-         }
-         else
-         {
-            resourceId = "unknown";
-         }
-
-         return string.Format("{{\"message\":\"Resource {0} deleted\", \"method\":\"DELETE\", \"timestamp\":\"{1}\"}}",
-            resourceId,
-            DateTime.Now);
+         responseString = "{\"error\":\"Method not supported\"}";
+         response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
       }
+   }
+   catch (Exception ex)
+   {
+      responseString = string.Format("{{\"error\":\"{0}\"}}", ex.Message);
+      response.StatusCode = (int)HttpStatusCode.InternalServerError;
+   }
+
+   // Запись ответа
+   byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+   response.ContentLength64 = buffer.Length;
+   response.OutputStream.Write(buffer, 0, buffer.Length);
+   response.OutputStream.Close();
+   // Логирование
+   Console.WriteLine("{0} {1} {2} -> {3}", DateTime.Now, request.HttpMethod, request.Url, response.StatusCode);
+}
+
+static string HandleGet(HttpListenerRequest request)
+{
+   // Пример: извлечение параметров запроса
+   string name = request.QueryString["name"];
+   if (name == null)
+   {
+      name = "world";
+   }
+
+   return string.Format("{{\"message\":\"Hello {0}\", \"method\":\"GET\", \"timestamp\":\"{1}\"}}",
+      name,
+      DateTime.Now);
+}
+
+static string HandlePost(HttpListenerRequest request)
+{
+   // Чтение тела запроса
+   string body;
+   using (StreamReader reader = new StreamReader(request.InputStream, request.ContentEncoding))
+   {
+      body = reader.ReadToEnd();
+   }
+
+   return string.Format("{{\"message\":\"Data received\", \"method\":\"POST\", \"data\":{0}, \"timestamp\":\"{1}\"}}",
+      body,
+      DateTime.Now);
+}
+
+static string HandlePut(HttpListenerRequest request)
+{
+   string body;
+   using (StreamReader reader = new StreamReader(request.InputStream, request.ContentEncoding))
+   {
+      body = reader.ReadToEnd();
+   }
+
+   // Пример обработки (обычно обновление ресурса)
+   return string.Format("{{\"message\":\"Resource updated\", \"method\":\"PUT\", \"data\":{0}, \"timestamp\":\"{1}\"}}",
+      body,
+      DateTime.Now);
+}
+
+static string HandleDelete(HttpListenerRequest request)
+{
+   // Удаление ресурса по ID из URL
+   string resourceId;
+   if (request.Url.Segments.Length > 1)
+   {
+      resourceId = request.Url.Segments[1];
+   }
+   else
+   {
+      resourceId = "unknown";
+   }
+
+   return string.Format("{{\"message\":\"Resource {0} deleted\", \"method\":\"DELETE\", \"timestamp\":\"{1}\"}}",
+      resourceId,
+      DateTime.Now);
+}
    }
 }
