@@ -17,24 +17,35 @@ namespace SyncAppServer
          Console.WriteLine("Сервер запущен на {0}", prefixes);
          Console.WriteLine("Цикл активен. Нажмите любую клавишу для остановки цикла");
          // Флаг продолжения цикла
-         bool exitLoop = true;
+         bool exitLoop = false;
          // Синхронная обработка запросов в цикле
          try
          {
-            if (!Console.KeyAvailable)
+            if (Console.KeyAvailable)
             {
-               while (exitLoop)
+               while (!exitLoop)
                {
+
                   // Ожидаем входящий запрос (блокирующий вызов)
                   HttpListenerContext context = listener.GetContext();
                   ProcessRequest(context);
+
+
+
                }
-            }
-            else
-            {
+
+
+
+
                // Меняем условие — цикл завершится
                exitLoop = true;
                Console.WriteLine("Цикл остановлен");
+            }
+            else
+            {
+               // Ожидаем входящий запрос (блокирующий вызов)
+               HttpListenerContext context = listener.GetContext();
+               ProcessRequest(context);
             }
          }
          catch (Exception ex)
