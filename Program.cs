@@ -34,6 +34,7 @@ namespace SyncAppServer
                   // Ожидаем входящий запрос (блокирующий вызов)
                   HttpListenerContext context = listener.GetContext();
                   ProcessRequest(context);
+                 // ProcessRequest(context); 
                }
             }
             catch (Exception ex)
@@ -94,6 +95,7 @@ namespace SyncAppServer
          }
 
          // Запись ответа
+         //int statusCode = response.StatusCode;
          byte[] buffer = Encoding.UTF8.GetBytes(responseString);
          response.ContentLength64 = buffer.Length;
          response.OutputStream.Write(buffer, 0, buffer.Length);
