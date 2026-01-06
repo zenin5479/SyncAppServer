@@ -18,7 +18,7 @@ namespace SyncAppServer
          Console.WriteLine("Цикл активен. Нажмите любую клавишу для остановки цикла");
          // Флаг продолжения цикла
          bool exitLoop = false;
-         bool keyAvailable = Console.KeyAvailable;
+         bool keyAvailable = Console.KeyAvailable == false;
          // Синхронная обработка запросов в цикле
 
          if (keyAvailable)
