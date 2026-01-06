@@ -41,6 +41,8 @@ namespace SyncAppServer
                Console.WriteLine("Ошибка: {0}", ex.Message);
             }
          }
+
+         Console.ReadKey();
       }
 
       static void ProcessRequest(HttpListenerContext context)
