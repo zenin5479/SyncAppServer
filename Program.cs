@@ -42,8 +42,6 @@ namespace SyncAppServer
          }
          else
          {
-            // Меняем условие — цикл завершится
-            exitLoop = true;
             Console.WriteLine("Цикл остановлен");
          }
 
