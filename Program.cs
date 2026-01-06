@@ -45,10 +45,10 @@ namespace SyncAppServer
             Console.WriteLine("Цикл остановлен");
          }
 
-         //Console.ReadKey();
+         Console.ReadKey();
 
          // Считываем клавишу без вывода
-         Console.ReadKey(intercept: true);
+         //Console.ReadKey(intercept: true);
          // Очищаем буфер клавиши
          //Console.ReadKey(true);
       }
