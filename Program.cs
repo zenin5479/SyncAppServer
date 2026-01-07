@@ -44,7 +44,6 @@ namespace SyncAppServer
          }
 
          //Console.ReadKey();
-
          // Считываем клавишу без вывода
          Console.ReadKey(intercept: true);
          // Очищаем буфер клавиши
