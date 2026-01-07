@@ -34,7 +34,7 @@ namespace SyncAppServer
                   // Ожидаем входящий запрос (блокирующий вызов)
                   HttpListenerContext context = listener.GetContext();
                   ProcessRequest(context);
-                  // ProcessRequest(context); 
+                 // ProcessRequest(context); 
                }
             }
             catch (Exception ex)
@@ -43,8 +43,10 @@ namespace SyncAppServer
             }
          }
 
+         Console.ReadKey();
+
          // Считываем клавишу без вывода
-         Console.ReadKey(intercept: true);
+         //Console.ReadKey(intercept: true);
          // Очищаем буфер клавиши
          //Console.ReadKey(true);
       }
