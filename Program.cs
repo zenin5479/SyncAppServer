@@ -45,8 +45,7 @@ namespace SyncAppServer
 
          // Считываем клавишу без вывода
          Console.ReadKey(intercept: true);
-         // Очищаем буфер клавиши
-         //Console.ReadKey(true);
+       
       }
 
       static void ProcessRequest(HttpListenerContext context)
